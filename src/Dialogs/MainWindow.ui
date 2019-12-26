@@ -53,6 +53,8 @@
      <string>About</string>
     </property>
     <addaction name="actionConnection"/>
+    <addaction name="separator"/>
+    <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuActions"/>
@@ -82,6 +84,11 @@
   <action name="actionConnection">
    <property name="text">
     <string>Connection...</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About...</string>
    </property>
   </action>
  </widget>

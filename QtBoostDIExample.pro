@@ -10,6 +10,7 @@ INCLUDEPATH += src
 
 SOURCES += \
     src/DataSources/VersionInformation.cpp \
+    src/Dialogs/AboutDialog.cpp \
     src/Dialogs/ConnectionDialog.cpp \
     src/Service/ConnectionService.cpp \
     src/main.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 
 HEADERS += \
     src/DataSources/VersionInformation.h \
+    src/Dialogs/AboutDialog.h \
     src/Dialogs/ConnectionDialog.h \
     src/Dialogs/MainWindow.h \
     src/DataSources/PermissionsContainer.h \
@@ -29,6 +31,7 @@ HEADERS += \
     src/Widgets/UserWidget.h
 
 FORMS += \
+    src/Dialogs/AboutDialog.ui \
     src/Dialogs/ConnectionDialog.ui \
     src/Dialogs/MainWindow.ui \
     src/Widgets/UserWidget.ui

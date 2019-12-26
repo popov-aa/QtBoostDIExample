@@ -1,4 +1,5 @@
 #include "MainWindow.h"
+#include "Dialogs/AboutDialog.h"
 #include "Dialogs/ConnectionDialog.h"
 #include "Widgets/UserWidget.h"
 #include "ui_MainWindow.h"
@@ -6,10 +7,12 @@
 #include <QDebug>
 
 MainWindow::MainWindow(
+    const boost::di::extension::ifactory<AboutDialog, QWidget*>& aboutDialog,
     const boost::di::extension::ifactory<ConnectionDialog>& connectionDialogFactory,
     const boost::di::extension::ifactory<UserWidget>& userWidgetFactory)
     : QMainWindow()
     , ui(new Ui::MainWindow)
+    , m_aboutDialog(aboutDialog)
     , m_connectionDialogFactory(connectionDialogFactory)
     , m_userWidgetFactory(userWidgetFactory)
 {
@@ -55,4 +58,9 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
 {
     Q_UNUSED(index);
     on_actionRemoveUser_triggered();
+}
+
+void MainWindow::on_actionAbout_triggered()
+{
+    m_aboutDialog.create(this)->exec();
 }

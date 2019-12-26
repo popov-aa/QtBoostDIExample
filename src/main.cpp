@@ -1,4 +1,5 @@
 #include "DataSources/PermissionsContainer.h"
+#include "Dialogs/AboutDialog.h"
 #include "Dialogs/ConnectionDialog.h"
 #include "Dialogs/MainWindow.h"
 #include "Models/PermissionsModel.h"
@@ -18,6 +19,7 @@ int main(int argc, char* argv[])
         boost::di::bind<PermissionsContainer>(),
         boost::di::bind<PermissionsModel>(),
         boost::di::bind<ConnectionService>(),
+        boost::di::bind<boost::di::extension::ifactory<AboutDialog, QWidget*>>().to(boost::di::extension::factory<AboutDialog> {}),
         boost::di::bind<boost::di::extension::ifactory<UserWidget>>().to(boost::di::extension::factory<UserWidget> {}),
         boost::di::bind<boost::di::extension::ifactory<ConnectionDialog>>().to(boost::di::extension::factory<ConnectionDialog> {}),
         boost::di::bind<MainWindow>());

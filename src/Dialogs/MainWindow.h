@@ -1,5 +1,6 @@
 #pragma once
 
+class AboutDialog;
 class ConnectionDialog;
 class UserWidget;
 
@@ -15,6 +16,7 @@ class MainWindow : public QMainWindow {
 
 public:
     MainWindow(
+        const boost::di::extension::ifactory<AboutDialog, QWidget*>& aboutDialog,
         const boost::di::extension::ifactory<ConnectionDialog>& connectionDialogFactory,
         const boost::di::extension::ifactory<UserWidget>& userWidgetFactory);
     ~MainWindow();
@@ -30,9 +32,12 @@ private slots:
 
     void on_tabWidget_tabCloseRequested(int index);
 
+    void on_actionAbout_triggered();
+
 private:
     Ui::MainWindow* ui;
 
+    const boost::di::extension::ifactory<AboutDialog, QWidget*>& m_aboutDialog;
     const boost::di::extension::ifactory<ConnectionDialog>& m_connectionDialogFactory;
     const boost::di::extension::ifactory<UserWidget>& m_userWidgetFactory;
 };
