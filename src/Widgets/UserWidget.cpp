@@ -5,7 +5,8 @@
 
 #include <QDebug>
 
-UserWidget::UserWidget(PermissionsModel* permissionsModel)
+UserWidget::UserWidget(PermissionsModel* permissionsModel,
+    const QString& username)
     : QWidget()
     , ui(new Ui::UserWidget)
     , m_permissionsModel(permissionsModel)
@@ -13,6 +14,7 @@ UserWidget::UserWidget(PermissionsModel* permissionsModel)
     qDebug() << __FILE__ << "created" << long(this);
     ui->setupUi(this);
     ui->tableView->setModel(m_permissionsModel);
+    ui->lineEditUsername->setText(username);
 }
 
 UserWidget::~UserWidget()

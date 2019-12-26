@@ -9,7 +9,7 @@
 MainWindow::MainWindow(
     const boost::di::extension::ifactory<AboutDialog, QWidget*>& aboutDialog,
     const boost::di::extension::ifactory<ConnectionDialog>& connectionDialogFactory,
-    const boost::di::extension::ifactory<UserWidget>& userWidgetFactory)
+    const boost::di::extension::ifactory<UserWidget, QString>& userWidgetFactory)
     : QMainWindow()
     , ui(new Ui::MainWindow)
     , m_aboutDialog(aboutDialog)
@@ -28,7 +28,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionAddUser_triggered()
 {
-    ui->tabWidget->addTab(m_userWidgetFactory.create().release(), "User");
+    QString username = QString("User #%1").arg(ui->tabWidget->count() + 1);
+    QWidget* widget = m_userWidgetFactory.create(std::move(username)).release();
+    ui->tabWidget->addTab(widget, username);
+    ui->tabWidget->setCurrentWidget(widget);
 }
 
 void MainWindow::on_actionRemoveUser_triggered()
@@ -56,11 +59,11 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::on_tabWidget_tabCloseRequested(int index)
 {
-    Q_UNUSED(index);
+    Q_UNUSED(index)
     on_actionRemoveUser_triggered();
 }
 
 void MainWindow::on_actionAbout_triggered()
 {
-    m_aboutDialog.create(this)->exec();
+    auto s = m_aboutDialog.create(this);
 }

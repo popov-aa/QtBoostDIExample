@@ -14,7 +14,8 @@ class UserWidget : public QWidget {
 
 public:
     explicit UserWidget(
-        PermissionsModel* permissionsModel);
+        PermissionsModel* permissionsModel,
+        const QString& username);
     virtual ~UserWidget();
 
 private:

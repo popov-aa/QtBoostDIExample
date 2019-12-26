@@ -18,7 +18,7 @@ public:
     MainWindow(
         const boost::di::extension::ifactory<AboutDialog, QWidget*>& aboutDialog,
         const boost::di::extension::ifactory<ConnectionDialog>& connectionDialogFactory,
-        const boost::di::extension::ifactory<UserWidget>& userWidgetFactory);
+        const boost::di::extension::ifactory<UserWidget, QString>& userWidgetFactory);
     ~MainWindow();
 
 private slots:
@@ -39,5 +39,5 @@ private:
 
     const boost::di::extension::ifactory<AboutDialog, QWidget*>& m_aboutDialog;
     const boost::di::extension::ifactory<ConnectionDialog>& m_connectionDialogFactory;
-    const boost::di::extension::ifactory<UserWidget>& m_userWidgetFactory;
+    const boost::di::extension::ifactory<UserWidget, QString>& m_userWidgetFactory;
 };
