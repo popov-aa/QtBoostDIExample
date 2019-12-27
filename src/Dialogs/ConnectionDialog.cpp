@@ -5,10 +5,8 @@
 
 #include <QDebug>
 
-ConnectionDialog::ConnectionDialog(
-    std::shared_ptr<ConnectionService> connectionService,
-    QWidget* parent)
-    : QDialog(parent)
+ConnectionDialog::ConnectionDialog(std::shared_ptr<ConnectionService> connectionService)
+    : QDialog(nullptr)
     , ui(new Ui::ConnectionDialog)
     , m_connectionService(connectionService)
 {
