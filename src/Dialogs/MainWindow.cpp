@@ -7,7 +7,7 @@
 #include <QDebug>
 
 MainWindow::MainWindow(
-    const boost::di::extension::ifactory<AboutDialog, QWidget*>& aboutDialog,
+    const boost::di::extension::ifactory<AboutDialog>& aboutDialog,
     const boost::di::extension::ifactory<ConnectionDialog>& connectionDialogFactory,
     const boost::di::extension::ifactory<UserWidget, QString>& userWidgetFactory)
     : QMainWindow()
@@ -65,5 +65,7 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
 
 void MainWindow::on_actionAbout_triggered()
 {
-    auto s = m_aboutDialog.create(this);
+    auto dialog = m_aboutDialog.create();
+    dialog->setParent(this, Qt::Dialog);
+    dialog->exec();
 }
