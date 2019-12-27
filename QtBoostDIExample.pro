@@ -6,7 +6,10 @@ CONFIG += c++14
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
-INCLUDEPATH += src
+INCLUDEPATH += \
+    src \
+    boost-di/include \
+    boost-di/extension/include
 
 SOURCES += \
     src/DataSources/VersionInformation.cpp \
