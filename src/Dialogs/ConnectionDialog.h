@@ -13,7 +13,9 @@ class ConnectionDialog : public QDialog {
     Q_OBJECT
 
 public:
-    explicit ConnectionDialog(std::shared_ptr<ConnectionService> connectionService);
+    explicit ConnectionDialog(
+        std::shared_ptr<ConnectionService> connectionService,
+        QWidget* parent);
     ~ConnectionDialog();
 
 private:

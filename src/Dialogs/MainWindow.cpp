@@ -7,8 +7,8 @@
 #include <QDebug>
 
 MainWindow::MainWindow(
-    const boost::di::extension::ifactory<AboutDialog>& aboutDialog,
-    const boost::di::extension::ifactory<ConnectionDialog>& connectionDialogFactory,
+    const boost::di::extension::ifactory<AboutDialog, QWidget*>& aboutDialog,
+    const boost::di::extension::ifactory<ConnectionDialog, QWidget*>& connectionDialogFactory,
     const boost::di::extension::ifactory<UserWidget, QString>& userWidgetFactory)
     : QMainWindow()
     , ui(new Ui::MainWindow)
@@ -47,9 +47,8 @@ void MainWindow::on_actionReloadUsers_triggered()
 
 void MainWindow::on_actionConnection_triggered()
 {
-    auto connectionDialog = m_connectionDialogFactory.create();
-    connectionDialog->setParent(this, Qt::Dialog);
-    connectionDialog->exec();
+    auto dialog = m_connectionDialogFactory.create(this);
+    dialog->exec();
 }
 
 void MainWindow::on_actionQuit_triggered()
@@ -65,7 +64,6 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
 
 void MainWindow::on_actionAbout_triggered()
 {
-    auto dialog = m_aboutDialog.create();
-    dialog->setParent(this, Qt::Dialog);
+    auto dialog = m_aboutDialog.create(this);
     dialog->exec();
 }

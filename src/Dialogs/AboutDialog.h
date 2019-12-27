@@ -10,7 +10,7 @@ class AboutDialog : public QDialog {
     Q_OBJECT
 
 public:
-    explicit AboutDialog();
+    explicit AboutDialog(QWidget* parent = nullptr);
     ~AboutDialog();
 
 private:
