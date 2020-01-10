@@ -1,12 +1,13 @@
 #include "PermissionsModel.h"
 
-#include "DataSources/PermissionsContainer.h"
+#include "DataSources/PermissionsContainerImpl.h"
 
 #include <QDebug>
 
-PermissionsModel::PermissionsModel(std::shared_ptr<PermissionsContainer> permissionsContainer)
+PermissionsModel::PermissionsModel(std::shared_ptr<PermissionsContainer> permissionsContainer, int value)
     : QAbstractTableModel()
     , m_permissionsContainer(permissionsContainer)
+    , m_value(value)
 {
     qDebug() << __FILE__ << "created" << long(this);
 }
@@ -30,7 +31,7 @@ QVariant PermissionsModel::data(const QModelIndex& index, int role) const
     Permission permission = m_permissionsContainer->permissions()[index.row()];
 
     if (role == Qt::DisplayRole) {
-        return m_permissionsContainer->title(permission);
+        return QString("%1 [%2]").arg(m_permissionsContainer->title(permission)).arg(m_value);
     } else if (role == Qt::CheckStateRole) {
         return m_checkedPermissions.contains(permission) ? Qt::Checked : Qt::Unchecked;
     } else {

@@ -12,22 +12,23 @@ INCLUDEPATH += \
     boost-di/extension/include
 
 SOURCES += \
+    src/DataSources/PermissionsContainerImpl.cpp \
     src/DataSources/VersionInformation.cpp \
     src/Dialogs/AboutDialog.cpp \
     src/Dialogs/ConnectionDialog.cpp \
     src/Service/ConnectionService.cpp \
     src/main.cpp \
     src/Dialogs/MainWindow.cpp \
-    src/DataSources/PermissionsContainer.cpp \
     src/Models/PermissionsModel.cpp \
     src/Widgets/UserWidget.cpp
 
 HEADERS += \
+    src/DataSources/PermissionsContainer.h \
+    src/DataSources/PermissionsContainerImpl.h \
     src/DataSources/VersionInformation.h \
     src/Dialogs/AboutDialog.h \
     src/Dialogs/ConnectionDialog.h \
     src/Dialogs/MainWindow.h \
-    src/DataSources/PermissionsContainer.h \
     src/DataTypes/Permission.h \
     src/Models/PermissionsModel.h \
     src/Service/ConnectionService.h \

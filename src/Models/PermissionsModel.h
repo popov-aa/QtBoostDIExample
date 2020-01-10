@@ -9,7 +9,7 @@ enum class Permission;
 
 class PermissionsModel : public QAbstractTableModel {
 public:
-    explicit PermissionsModel(std::shared_ptr<PermissionsContainer> permissionsContainer);
+    explicit PermissionsModel(std::shared_ptr<PermissionsContainer> permissionsContainer, int value);
     virtual ~PermissionsModel();
 
     virtual int columnCount(const QModelIndex& parent = QModelIndex()) const override;
@@ -24,5 +24,6 @@ public:
 
 private:
     std::shared_ptr<PermissionsContainer> m_permissionsContainer;
+    int m_value;
     QSet<Permission> m_checkedPermissions;
 };

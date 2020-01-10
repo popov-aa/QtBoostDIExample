@@ -5,7 +5,8 @@
 
 #include <QDebug>
 
-UserWidget::UserWidget(PermissionsModel* permissionsModel,
+UserWidget::UserWidget(
+    PermissionsModel* permissionsModel,
     const QString& username)
     : QWidget()
     , ui(new Ui::UserWidget)
@@ -15,6 +16,15 @@ UserWidget::UserWidget(PermissionsModel* permissionsModel,
     ui->setupUi(this);
     ui->tableView->setModel(m_permissionsModel);
     ui->lineEditUsername->setText(username);
+}
+
+UserWidget::UserWidget(
+    PermissionsModel* permissionsModel,
+    int value,
+    const QString& username)
+    : UserWidget(permissionsModel, username)
+{
+    ui->lineEditValue->setText(QString::number(value));
 }
 
 UserWidget::~UserWidget()

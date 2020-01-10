@@ -2,6 +2,7 @@
 
 class PermissionsModel;
 
+#include "boost/di/extension/injections/named_parameters.hpp"
 #include <QWidget>
 #include <memory>
 
@@ -16,6 +17,12 @@ public:
     explicit UserWidget(
         PermissionsModel* permissionsModel,
         const QString& username);
+
+    $inject(UserWidget,
+        PermissionsModel* permissionsModel,
+        [[named("toto")]] int value,
+        const QString& username);
+
     virtual ~UserWidget();
 
 private:

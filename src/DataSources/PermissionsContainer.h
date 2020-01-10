@@ -1,19 +1,12 @@
 #pragma once
 
-#include "DataTypes/Permission.h"
+enum class Permission;
 
 #include <QList>
-#include <QObject>
+#include <QString>
 
-class PermissionsContainer : public QObject {
+class PermissionsContainer {
 public:
-    explicit PermissionsContainer();
-    virtual ~PermissionsContainer();
-
-    QList<Permission> permissions() const;
-
-    QString title(Permission permission) const;
-
-private:
-    QList<Permission> m_permissions;
+    virtual QList<Permission> permissions() const = 0;
+    virtual QString title(Permission permission) const = 0;
 };
